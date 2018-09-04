@@ -15,25 +15,40 @@ public class Aluno implements Serializable{
 	@GeneratedValue
 	private Integer id;
 	private String nome;
+	private String cpf;
 	private String rg;
 	private Integer matricula;
 	
 	
 	
+	public Aluno() {
+		
+	}
+
 	
-	public Aluno(Integer id, String nome, String rg, Integer matricula) {
+	public Aluno(Integer id, String nome, String cpf, String rg, Integer matricula) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.cpf = cpf;
 		this.rg = rg;
 		this.matricula = matricula;
 	}
-	
-	
-	
-	@Override
+
+@Override
 	public String toString() {
 		return "Aluno [id=" + id + ", nome=" + nome + ", rg=" + rg + ", matricula=" + matricula + "]";
+	}
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 
