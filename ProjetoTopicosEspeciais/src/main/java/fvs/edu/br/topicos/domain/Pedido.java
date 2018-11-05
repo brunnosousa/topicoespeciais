@@ -21,15 +21,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Pedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
 	private Date instante;
-	
-	
 	
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
@@ -46,4 +43,67 @@ public class Pedido implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
 	private Pagamento pagamento;
 	
+	public Pedido() {
+		
+	}
+
+	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoEntrega) {
+		super();
+		this.id = id;
+		this.instante = instante;
+		this.cliente = cliente;
+		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Date getInstante() {
+		return instante;
+	}
+
+	public void setInstante(Date instante) {
+		this.instante = instante;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Endereco getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	public void setEnderecoEntrega(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+	
+	
 }
+
+
