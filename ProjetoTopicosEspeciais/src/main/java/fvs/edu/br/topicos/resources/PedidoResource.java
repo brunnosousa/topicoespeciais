@@ -13,18 +13,15 @@ import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
 @RequestMapping(value = "/pedidos")
-public class PedidoResouce {
-	
+public class PedidoResource {
+
 	@Autowired
 	private PedidoService service;
-	
-	@RequestMapping(value = "/{id}",
-			method = RequestMethod.GET)
-	public ResponseEntity<?> find
-	(@PathVariable Integer id) throws ObjectNotFoundException{
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		Pedido obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
-		
 	}
-	
+
 }
